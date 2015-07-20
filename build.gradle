@@ -1,0 +1,19 @@
+group 'ca.kanoa'
+version '2.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'http://repo.bukkit.org/content/groups/public/'
+    }
+}
+
+dependencies {
+    compile 'org.bukkit:bukkit:1.7.9-R0.2'
+}
+
+jar {
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
